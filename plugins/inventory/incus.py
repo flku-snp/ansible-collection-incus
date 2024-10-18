@@ -284,6 +284,8 @@ class InventoryModule(BaseInventoryPlugin, Cacheable, Constructable):
 
             self.inventory.set_variable(instance_name, 'ansible_incus_os', self._get_config_value(instance, 'image.os'))
             self.inventory.set_variable(instance_name, 'ansible_incus_release', self._get_config_value(instance, 'image.release'))
+            if self.project:
+                self.inventory.set_variable(instance_name, 'ansible_incus_project', self.project)
 
             iface = self._get_interface(instance)
             if iface:
